@@ -9,9 +9,9 @@ using Microsoft.Extensions.ObjectPool;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
-    internal class ResponseCachingKeyProvider : IResponseCachingKeyProvider
+    public class ResponseCachingKeyProvider : IResponseCachingKeyProvider
     {
         // Use the record separator for delimiting components of the cache key to avoid possible collisions
         private static readonly char KeyDelimiter = '\x1e';
@@ -21,7 +21,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
         private readonly ObjectPool<StringBuilder> _builderPool;
         private readonly ResponseCachingOptions _options;
 
-        internal ResponseCachingKeyProvider(ObjectPoolProvider poolProvider, IOptions<ResponseCachingOptions> options)
+        public ResponseCachingKeyProvider(ObjectPoolProvider poolProvider, IOptions<ResponseCachingOptions> options)
         {
             if (poolProvider == null)
             {

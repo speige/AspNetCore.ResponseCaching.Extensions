@@ -4,9 +4,9 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
-    internal interface IResponseCache
+    public interface IResponseCache
     {
         /// <summary>
         /// Gets the cached response for the given key, if it exists.

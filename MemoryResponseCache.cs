@@ -5,13 +5,13 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
-    internal class MemoryResponseCache : IResponseCache
+    public class MemoryResponseCache : IResponseCache
     {
         private readonly IMemoryCache _cache;
 
-        internal MemoryResponseCache(IMemoryCache cache)
+        public MemoryResponseCache(IMemoryCache cache)
         {
             _cache = cache ?? throw new ArgumentNullException(nameof(cache));
         }

@@ -6,9 +6,9 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
-    internal class ResponseCachingStream : Stream
+    public class ResponseCachingStream : Stream
     {
         private readonly Stream _innerStream;
         private readonly long _maxBufferSize;
@@ -17,7 +17,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
         private readonly Action _startResponseCallback;
         private readonly Func<Task> _startResponseCallbackAsync;
 
-        internal ResponseCachingStream(Stream innerStream, long maxBufferSize, int segmentSize, Action startResponseCallback, Func<Task> startResponseCallbackAsync)
+        public ResponseCachingStream(Stream innerStream, long maxBufferSize, int segmentSize, Action startResponseCallback, Func<Task> startResponseCallbackAsync)
         {
             _innerStream = innerStream;
             _maxBufferSize = maxBufferSize;
@@ -27,7 +27,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             _segmentWriteStream = new SegmentWriteStream(_segmentSize);
         }
 
-        internal bool BufferingEnabled { get; private set; } = true;
+        public bool BufferingEnabled { get; private set; } = true;
 
         public override bool CanRead => _innerStream.CanRead;
 
@@ -47,7 +47,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             }
         }
 
-        internal Stream GetBufferStream()
+        public Stream GetBufferStream()
         {
             if (!BufferingEnabled)
             {
@@ -56,7 +56,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             return new SegmentReadStream(_segmentWriteStream.GetSegments(), _segmentWriteStream.Length);
         }
 
-        internal void DisableBuffering()
+        public void DisableBuffering()
         {
             BufferingEnabled = false;
             _segmentWriteStream.Dispose();

@@ -3,12 +3,12 @@
 
 using System;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
     /// <summary>
     /// Abstracts the system clock to facilitate testing.
     /// </summary>
-    internal interface ISystemClock
+    public interface ISystemClock
     {
         /// <summary>
         /// Retrieves the current system time in UTC.

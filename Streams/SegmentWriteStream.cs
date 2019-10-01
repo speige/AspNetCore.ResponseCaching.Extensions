@@ -7,9 +7,9 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
-    internal class SegmentWriteStream : Stream
+    public class SegmentWriteStream : Stream
     {
         private readonly List<byte[]> _segments = new List<byte[]>();
         private readonly MemoryStream _bufferStream = new MemoryStream();
@@ -18,7 +18,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
         private bool _closed;
         private bool _disposed;
 
-        internal SegmentWriteStream(int segmentSize)
+        public SegmentWriteStream(int segmentSize)
         {
             if (segmentSize <= 0)
             {
@@ -29,7 +29,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
         }
 
         // Extracting the buffered segments closes the stream for writing
-        internal List<byte[]> GetSegments()
+        public List<byte[]> GetSegments()
         {
             if (!_closed)
             {

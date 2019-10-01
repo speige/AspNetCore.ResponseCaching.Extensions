@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using Microsoft.Net.Http.Headers;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
-    internal class ResponseCachingPolicyProvider : IResponseCachingPolicyProvider
+    public class ResponseCachingPolicyProvider : IResponseCachingPolicyProvider
     {
         public virtual bool AttemptResponseCaching(ResponseCachingContext context)
         {

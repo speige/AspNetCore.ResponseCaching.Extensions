@@ -48,7 +48,7 @@ namespace Microsoft.Extensions.DependencyInjection
             }
 
             services.Configure(configureOptions);
-            services.AddResponseCaching();
+            AddResponseCaching(services);
 
             return services;
         }

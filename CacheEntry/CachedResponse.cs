@@ -5,9 +5,9 @@ using System;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
-    internal class CachedResponse : IResponseCacheEntry
+    public class CachedResponse : IResponseCacheEntry
     {
         public DateTimeOffset Created { get; set; }
 

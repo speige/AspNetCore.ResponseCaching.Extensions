@@ -4,9 +4,9 @@
 using System;
 using System.Threading;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
-    internal class FastGuid
+    public class FastGuid
     {
         // Base32 encoding - in ascii sort order for easy text based sorting
         private static readonly char[] s_encode32Chars = "0123456789ABCDEFGHIJKLMNOPQRSTUV".ToCharArray();
@@ -16,9 +16,9 @@ namespace Microsoft.AspNetCore.ResponseCaching
         // Instance components
         private string _idString;
 
-        internal long IdValue { get; }
+        public long IdValue { get; }
 
-        internal string IdString
+        public string IdString
         {
             get
             {
@@ -43,12 +43,12 @@ namespace Microsoft.AspNetCore.ResponseCaching
                 guidBytes[3] << 56;
         }
 
-        internal FastGuid(long id)
+        public FastGuid(long id)
         {
             IdValue = id;
         }
 
-        internal static FastGuid NewGuid()
+        public static FastGuid NewGuid()
         {
             return new FastGuid(Interlocked.Increment(ref NextId));
         }

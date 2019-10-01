@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
-    internal class ResponseCachingContext
+    public class ResponseCachingContext
     {
         private DateTimeOffset? _responseDate;
         private bool _parsedResponseDate;
@@ -21,7 +21,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
         private TimeSpan? _responseMaxAge;
         private bool _parsedResponseMaxAge;
 
-        internal ResponseCachingContext(HttpContext httpContext, ILogger logger)
+        public ResponseCachingContext(HttpContext httpContext, ILogger logger)
         {
             HttpContext = httpContext;
             Logger = logger;
@@ -29,33 +29,33 @@ namespace Microsoft.AspNetCore.ResponseCaching
 
         public HttpContext HttpContext { get; }
 
-        public DateTimeOffset? ResponseTime { get; internal set; }
+        public DateTimeOffset? ResponseTime { get; set; }
 
-        public TimeSpan? CachedEntryAge { get; internal set; }
+        public TimeSpan? CachedEntryAge { get; set; }
 
         public CachedVaryByRules CachedVaryByRules { get; set; }
 
-        internal ILogger Logger { get; }
+        public ILogger Logger { get; }
 
-        internal bool ShouldCacheResponse { get; set; }
+        public bool ShouldCacheResponse { get; set; }
 
-        internal string BaseKey { get;  set; }
+        public string BaseKey { get;  set; }
 
-        internal string StorageVaryKey { get;  set; }
+        public string StorageVaryKey { get;  set; }
 
-        internal TimeSpan CachedResponseValidFor { get;  set; }
+        public TimeSpan CachedResponseValidFor { get;  set; }
 
-        internal CachedResponse CachedResponse { get;  set; }
+        public CachedResponse CachedResponse { get;  set; }
 
-        internal bool ResponseStarted { get; set; }
+        public bool ResponseStarted { get; set; }
 
-        internal Stream OriginalResponseStream { get; set; }
+        public Stream OriginalResponseStream { get; set; }
 
-        internal ResponseCachingStream ResponseCachingStream { get; set; }
+        public ResponseCachingStream ResponseCachingStream { get; set; }
 
-        internal IHeaderDictionary CachedResponseHeaders { get; set; }
+        public IHeaderDictionary CachedResponseHeaders { get; set; }
 
-        internal DateTimeOffset? ResponseDate
+        public DateTimeOffset? ResponseDate
         {
             get
             {
@@ -82,7 +82,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             }
         }
 
-        internal DateTimeOffset? ResponseExpires
+        public DateTimeOffset? ResponseExpires
         {
             get
             {
@@ -103,7 +103,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             }
         }
 
-        internal TimeSpan? ResponseSharedMaxAge
+        public TimeSpan? ResponseSharedMaxAge
         {
             get
             {
@@ -116,7 +116,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             }
         }
 
-        internal TimeSpan? ResponseMaxAge
+        public TimeSpan? ResponseMaxAge
         {
             get
             {

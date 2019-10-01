@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
-    internal class MemoryCachedResponse
+    public class MemoryCachedResponse
     {
         public DateTimeOffset Created { get; set; }
 

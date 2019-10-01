@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.ResponseCaching;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.ObjectPool;
@@ -13,7 +14,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 using Microsoft.Net.Http.Headers;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
     public class ResponseCachingMiddleware
     {
@@ -48,7 +49,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
         { }
 
         // for testing
-        internal ResponseCachingMiddleware(
+        public ResponseCachingMiddleware(
             RequestDelegate next,
             IOptions<ResponseCachingOptions> options,
             ILoggerFactory loggerFactory,
@@ -140,7 +141,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             }
         }
 
-        internal async Task<bool> TryServeCachedResponseAsync(ResponseCachingContext context, IResponseCacheEntry cacheEntry)
+        public async Task<bool> TryServeCachedResponseAsync(ResponseCachingContext context, IResponseCacheEntry cacheEntry)
         {
             if (!(cacheEntry is CachedResponse cachedResponse))
             {
@@ -208,7 +209,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             return false;
         }
 
-        internal async Task<bool> TryServeFromCacheAsync(ResponseCachingContext context)
+        public async Task<bool> TryServeFromCacheAsync(ResponseCachingContext context)
         {
             context.BaseKey = _keyProvider.CreateBaseKey(context);
             var cacheEntry = await _cache.GetAsync(context.BaseKey);
@@ -331,7 +332,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             return false;
         }
 
-        internal void FinalizeCacheHeaders(ResponseCachingContext context)
+        public void FinalizeCacheHeaders(ResponseCachingContext context)
         {
             if (OnFinalizeCacheHeaders(context))
             {
@@ -339,7 +340,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             }
         }
 
-        internal Task FinalizeCacheHeadersAsync(ResponseCachingContext context)
+        public Task FinalizeCacheHeadersAsync(ResponseCachingContext context)
         {
             if (OnFinalizeCacheHeaders(context))
             {
@@ -348,7 +349,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             return Task.CompletedTask;
         }
 
-        internal async Task FinalizeCacheBodyAsync(ResponseCachingContext context)
+        public async Task FinalizeCacheBodyAsync(ResponseCachingContext context)
         {
             if (context.ShouldCacheResponse && context.ResponseCachingStream.BufferingEnabled)
             {
@@ -395,7 +396,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             return false;
         }
 
-        internal void StartResponse(ResponseCachingContext context)
+        public void StartResponse(ResponseCachingContext context)
         {
             if (OnStartResponse(context))
             {
@@ -403,7 +404,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             }
         }
 
-        internal Task StartResponseAsync(ResponseCachingContext context)
+        public Task StartResponseAsync(ResponseCachingContext context)
         {
             if (OnStartResponse(context))
             {
@@ -412,7 +413,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             return Task.CompletedTask;
         }
 
-        internal static void AddResponseCachingFeature(HttpContext context)
+        public static void AddResponseCachingFeature(HttpContext context)
         {
             if (context.Features.Get<IResponseCachingFeature>() != null)
             {
@@ -421,7 +422,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             context.Features.Set<IResponseCachingFeature>(new ResponseCachingFeature());
         }
 
-        internal void ShimResponseStream(ResponseCachingContext context)
+        public void ShimResponseStream(ResponseCachingContext context)
         {
             // Shim response stream
             context.OriginalResponseStream = context.HttpContext.Response.Body;
@@ -437,10 +438,10 @@ namespace Microsoft.AspNetCore.ResponseCaching
             AddResponseCachingFeature(context.HttpContext);
         }
 
-        internal static void RemoveResponseCachingFeature(HttpContext context) =>
+        public static void RemoveResponseCachingFeature(HttpContext context) =>
             context.Features.Set<IResponseCachingFeature>(null);
 
-        internal static void UnshimResponseStream(ResponseCachingContext context)
+        public static void UnshimResponseStream(ResponseCachingContext context)
         {
             // Unshim response stream
             context.HttpContext.Response.Body = context.OriginalResponseStream;
@@ -449,7 +450,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             RemoveResponseCachingFeature(context.HttpContext);
         }
 
-        internal static bool ContentIsNotModified(ResponseCachingContext context)
+        public static bool ContentIsNotModified(ResponseCachingContext context)
         {
             var cachedResponseHeaders = context.CachedResponseHeaders;
             var ifNoneMatchHeader = context.HttpContext.Request.Headers[HeaderNames.IfNoneMatch];
@@ -505,7 +506,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
         }
 
         // Normalize order and casing
-        internal static StringValues GetOrderCasingNormalizedStringValues(StringValues stringValues)
+        public static StringValues GetOrderCasingNormalizedStringValues(StringValues stringValues)
         {
             if (stringValues.Count == 1)
             {

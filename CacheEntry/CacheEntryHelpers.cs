@@ -3,11 +3,11 @@
 
 using Microsoft.Extensions.Primitives;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
-    internal static class CacheEntryHelpers
+    public static class CacheEntryHelpers
     {
-        internal static long EstimateCachedResponseSize(CachedResponse cachedResponse)
+        public static long EstimateCachedResponseSize(CachedResponse cachedResponse)
         {
             if (cachedResponse == null)
             {
@@ -38,7 +38,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             }
         }
 
-        internal static long EstimateCachedVaryByRulesySize(CachedVaryByRules cachedVaryByRules)
+        public static long EstimateCachedVaryByRulesySize(CachedVaryByRules cachedVaryByRules)
         {
             if (cachedVaryByRules == null)
             {
@@ -65,7 +65,7 @@ namespace Microsoft.AspNetCore.ResponseCaching
             }
         }
 
-        internal static long EstimateStringValuesSize(StringValues stringValues)
+        public static long EstimateStringValuesSize(StringValues stringValues)
         {
             checked
             {

@@ -3,11 +3,11 @@
 
 using System.Text;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
-    internal static class StringBuilderExtensions
+    public static class StringBuilderExtensions
     {
-        internal static StringBuilder AppendUpperInvariant(this StringBuilder builder, string value)
+        public static StringBuilder AppendUpperInvariant(this StringBuilder builder, string value)
         {
             if (!string.IsNullOrEmpty(value))
             {

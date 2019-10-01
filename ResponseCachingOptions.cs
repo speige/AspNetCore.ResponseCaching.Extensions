@@ -3,7 +3,7 @@
 
 using System.ComponentModel;
 
-namespace Microsoft.AspNetCore.ResponseCaching
+namespace AspNetCore.ResponseCaching
 {
     public class ResponseCachingOptions
     {
@@ -26,6 +26,6 @@ namespace Microsoft.AspNetCore.ResponseCaching
         /// For testing purposes only.
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        internal ISystemClock SystemClock { get; set; } = new SystemClock();
+        public ISystemClock SystemClock { get; set; } = new SystemClock();
     }
 }
