@@ -3,7 +3,7 @@
 	<PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
 	  <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-	  <PackageLicenseUrl>https://github.com/speige/AspNetCore.ResponseCaching.Extensions/blob/master/LICENSE</PackageLicenseUrl>
+	  <PackageLicenseUrl>https://github.com/speige/AspNetCore.ResponseCaching.Extensions/blob/master/Extensions/LICENSE</PackageLicenseUrl>
 	  <PackageProjectUrl></PackageProjectUrl>
 	  <ProjectUrl>https://github.com/speige/AspNetCore.ResponseCaching.Extensions</ProjectUrl>
 	  <RepositoryUrl>https://github.com/speige/AspNetCore.ResponseCaching.Extensions</RepositoryUrl>
@@ -12,7 +12,7 @@
 	  <Authors>Devin Garner</Authors>
 	  <Company />
 	  <Description>Extensions for overriding the behaviour of the default ASP.Net Core ResponseCaching as well as additional Cache implementations such as Disk. (Similar to OutputCache of previous versions of ASP.Net)</Description>
-	  <Version>1.0.1</Version>
+	  <Version>2.0.0</Version>
 	  <SignAssembly>false</SignAssembly>
 	  <AssemblyOriginatorKeyFile>strongName.snk</AssemblyOriginatorKeyFile>
 	  <ApplicationIcon />

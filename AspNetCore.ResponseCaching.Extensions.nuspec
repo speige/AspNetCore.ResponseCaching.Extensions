@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>AspNetCore.ResponseCaching.Extensions</id>
+    <version>2.0.0</version>
+    <title>AspNetCore.ResponseCaching.Extensions</title>
+    <authors>Devin Garner</authors>
+	<license type="expression">MIT</license>
+    <projectUrl>https://github.com/speige/AspNetCore.ResponseCaching.Extensions</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Extensions for overriding the behaviour of the default ASP.Net Core ResponseCaching as well as additional Cache implementations such as Disk. (Similar to OutputCache of previous versions of ASP.Net)</description>
+    <releaseNotes>.Net Core 3 support</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>csharp, asp, net, core, standard, response, cache, caching, disk, disc, memory, output</tags>
+  </metadata>
+</package>
